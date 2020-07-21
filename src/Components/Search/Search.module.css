@@ -1,0 +1,17 @@
+.main-container{
+    padding: 2%;
+}
+
+.action:first-child{
+    border-right: 2px solid grey;
+}
+
+.input-text{
+    font-style: italic;
+}
+
+@media only screen and (max-width: 767px){
+    .action:first-child{
+        border: none;
+    }
+}

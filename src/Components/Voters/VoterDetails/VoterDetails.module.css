@@ -1,0 +1,13 @@
+
+.user-image{
+    width: 150px;
+    margin: 0 auto;
+}
+
+.user-image img{
+    border-radius: 50%;
+    height: 145px;
+    margin: 0 auto;
+    transform: translateY(20%);
+    width: 100%;
+}
