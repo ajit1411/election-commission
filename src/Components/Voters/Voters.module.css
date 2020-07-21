@@ -2,10 +2,6 @@
     padding: 2%;
 }
 
-.left-container .info{
-    margin: 0 auto;
-    transform: translateY(150%);
-}
 
 .user-list{
     /* border: 2px solid red; */

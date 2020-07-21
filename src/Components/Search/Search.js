@@ -54,38 +54,42 @@ const Search = props => {
         <React.Fragment>
             <Loader show={isLoading} message={'Please wait while we fetch data from server'} />
             <div className={classes['main-container']}>
-                <div className={`jumbotron`}>
-                    {
-                        userLists['user_count'] && userLists['user_count'] > 0 ? (
-                            <div className={`row`}>
-                                {
-                                    Object.keys(userLists['state_wise_count']).map(state => (
-                                        <React.Fragment>
-                                            <div className={`col col-sm-12 col-md-2 col-lg-2`}>
-                                                <div className={`${classes['counter']}`}>
-                                                    <h3>
-                                                        {userLists['state_wise_count'][state]}
-                                                    </h3>
-                                                    <h6>
-                                                        {state}
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </React.Fragment>
-                                    ))
-                                }
-                            </div>
-                        ) : isLoading ? 'Loading....' : 'No data'
-                    }
-                </div>
+                {
+                    window.innerWidth > 600 ? (
+                        <div className={`jumbotron`}>
+                            {
+                                userLists['user_count'] && userLists['user_count'] > 0 ? (
+                                    <div className={`row`}>
+                                        {
+                                            Object.keys(userLists['state_wise_count']).map(state => (
+                                                <React.Fragment>
+                                                    <div className={`col-sm-12 col-md-2 col-lg-2`}>
+                                                        <div className={`${classes['counter']}`}>
+                                                            <h3>
+                                                                {userLists['state_wise_count'][state]}
+                                                            </h3>
+                                                            <h6>
+                                                                {state}
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </React.Fragment>
+                                            ))
+                                        }
+                                    </div>
+                                ) : isLoading ? 'Loading....' : 'No data'
+                            }
+                        </div>
+                    ) : ''
+                }
                 <div className={`container-fluid`}>
                     <div className={`row`}>
-                        <div className={`${classes['action']} col col-xs-12 col-md-6 col-lg-6 col-sm-12`}>
+                        <div className={`${classes['action']} col-xs-12 col-md-6 col-lg-6 col-sm-12`}>
                             <h5>
                                 Search voter ID
                             </h5>
                             <div className={`row`}>
-                                <div className={`form-group col col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2`}>
+                                <div className={`form-group col-md-2 col-lg-2 col-xl-2`}>
                                     <div className={classes['form-group']}>
                                         <select className={`form-control`} onChange={e => setsearchField({ ...searchField, 'label': e.target.value })}>
                                             <option value={'email'}> Email </option>
@@ -96,25 +100,25 @@ const Search = props => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className={`form-group col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8`}>
+                                <div className={`form-group col-md-8 col-lg-8 col-xl-8`}>
                                     <input onChange={event => setsearchField({ ...searchField, 'value': event.target.value })} className={`form-control ${classes['input-text']}`} placeholder={'Search by name, area, etc.'} />
                                 </div>
-                                <div className={`form-group col col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2`}>
+                                <div className={`form-group col-md-2 col-lg-2 col-xl-2`}>
                                     <button onClick={getUsers} style={{ width: '100%' }} className={`btn btn-success`}>
                                         Search
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div className={`col col-xs-12 col-xl-6 col-md-6 col-lg-6 col-sm-12`}>
+                        <div className={`col-xs-12 col-xl-6 col-md-6 col-lg-6 col-sm-12`}>
                             <h5>
                                 New user
                         </h5>
                             <div className={`row`}>
-                                <div className={`form-group col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8`}>
+                                <div className={`form-group col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8`}>
                                     <input onChange={e => setnewUserEmail(e.target.value)} type='email' className={`form-control ${classes['input-text']}`} placeholder={'abc@xyz.com'} />
                                 </div>
-                                <div className={`form-group col col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4`}>
+                                <div className={`form-group col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4`}>
                                     <button onClick={createNewUser} style={{ width: '100%' }} className={`btn btn-danger`}>
                                         Register
                                 </button>
